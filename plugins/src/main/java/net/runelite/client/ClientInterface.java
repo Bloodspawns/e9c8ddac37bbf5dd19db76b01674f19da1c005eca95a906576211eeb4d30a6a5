@@ -51,10 +51,10 @@ public class ClientInterface
 	// Get if the given renderable object will be hidden or not
 	public static boolean getHidden(Renderable renderable)
 	{
-		Method setHidden = null;
+		Method getHidden = null;
 		try
 		{
-			setHidden = renderable.getClass().getMethod("getHidden");
+			getHidden = renderable.getClass().getMethod("getHidden");
 		}
 		catch (NoSuchMethodException e)
 		{
@@ -64,7 +64,7 @@ public class ClientInterface
 
 		try
 		{
-			return (boolean)setHidden.invoke(renderable);
+			return (boolean)getHidden.invoke(renderable);
 		}
 		catch (IllegalAccessException | InvocationTargetException e)
 		{
@@ -107,7 +107,7 @@ public class ClientInterface
 		{
 			try
 			{
-				setLoginScreenBackgroundPixels = client.getClass().getMethod("setLoginScreenBackgroundPixels");
+				setLoginScreenBackgroundPixels = client.getClass().getMethod("setLoginScreenBackgroundPixels", SpritePixels.class);
 			}
 			catch (NoSuchMethodException e)
 			{
@@ -185,7 +185,7 @@ public class ClientInterface
 		{
 			try
 			{
-				setDeadNPCsHidden = client.getClass().getMethod("setDeadNPCsHidden");
+				setDeadNPCsHidden = client.getClass().getMethod("setDeadNPCsHidden", boolean.class);
 			}
 			catch (NoSuchMethodException e)
 			{

@@ -80,7 +80,7 @@ public class ClientInterface
 		{
 			try
 			{
-				getInteracting = p.getClass().getMethod("getHidden");
+				getInteracting = p.getClass().getMethod("getInteracting");
 			}
 			catch (NoSuchMethodException e)
 			{

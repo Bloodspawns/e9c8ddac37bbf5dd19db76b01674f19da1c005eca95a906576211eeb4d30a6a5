@@ -21,7 +21,7 @@ dependencies {
     runclient(files(client.files.filter { !it.name.startsWith("client") }))
     runclient(files("build/libs/bclient-1.0.jar"))
     plugins(project(":plugins")) { isTransitive = false }
-    plugins(files(project.gradle.gradleUserHomeDir.parent + "/.runelite/bluerepo/plugins-1.0.jar"))
+    plugins(fileTree(project.gradle.gradleUserHomeDir.parent + "/.runelite/bluerepo/"){ include("*.jar") })
     runclient(fileTree(project.gradle.gradleUserHomeDir.parent + "/.runelite/bexternalplugins/"){ include("*.jar") })
     patches(files(project.gradle.gradleUserHomeDir.parent + "/.runelite/bluerepo/blue-patch.jar"))
 }

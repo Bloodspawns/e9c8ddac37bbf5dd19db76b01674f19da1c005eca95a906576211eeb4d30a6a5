@@ -14,6 +14,7 @@ import java.util.HashSet;
 @Slf4j
 public class ClientInterface
 {
+	private static Method getRotation = null;
 	private static Method getInteracting = null;
 	private static Method setLoginScreenBackgroundPixels = null;
 	private static Method rightSpriteOverwrite = null;
@@ -23,6 +24,33 @@ public class ClientInterface
 	private static HashSet<Integer> getNpcsByAnimationToHideOnDeath = null;
 	private static HashSet<Integer> getNpcsByIdToHideOnDeath = null;
 	private static Method setDeadNPCsHidden = null;
+
+	// Get the rotation of the actor object. This is different from the orientation which is the world space rotation.
+	public static int getRotation(Actor actor)
+	{
+		if (getRotation == null)
+		{
+			try
+			{
+				getRotation = actor.getClass().getMethod("getRotation");
+			}
+			catch (NoSuchMethodException e)
+			{
+				log.debug("Couldn't find method getRotation for class {}", actor.getClass());
+				return -1;
+			}
+		}
+
+		try
+		{
+			return (int) getRotation.invoke(actor);
+		}
+		catch (IllegalAccessException | InvocationTargetException e)
+		{
+			log.debug("Couldn't call method getRotation for class {}", actor.getClass());
+		}
+		return -1;
+	}
 
 	// Set if the given renderable object will be hidden or not
 	public static void setHidden(Renderable renderable, boolean hidden)

@@ -16,6 +16,7 @@ val baseRuneLite = configurations.create("baseRuneLite")
 val baseBlueLite = configurations.create("baseBlueLite")
 val repackedClient = configurations.create("repackedClient")
 dependencies {
+    client(Libraries.runelite_jshell)
     client(Libraries.runelite_client)
     baseBlueLite(fileTree(project.gradle.gradleUserHomeDir.parent + "/.runelite/bluerepo/"){
         include("*.jar") }.filter{ !isRLClient(it.name) && !isRLApi(it.name) && !isRLHttpApi(it.name)})
@@ -62,7 +63,7 @@ tasks {
 
     register<Jar>("repack") {
         doFirst {
-            println("Repacking " + client.first().name + " into bclient-1.0.jar")
+            println("Repacking " + client.files.first { isRLClient(it.name) }.name + " into bclient-1.0.jar")
         }
         from(zipTree(client.first())) {
             exclude("META-INF/")

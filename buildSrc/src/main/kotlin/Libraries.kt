@@ -61,6 +61,7 @@ object Libraries {
     const val runelite_client = "net.runelite:client:${Versions.runelite}"
     const val runelite_api = "net.runelite:runelite-api:${Versions.runelite}"
     const val runelite_http_api = "net.runelite:http-api:${Versions.runelite}"
+    const val runelite_jshell = "net.runelite:jshell:${Versions.runelite}"
     const val annotations = "org.jetbrains:annotations:${Versions.annotations}"
     const val antlr = "org.antlr:antlr4-runtime:${Versions.antlr}"
     const val apacheCommonsCompress = "org.apache.commons:commons-compress:${Versions.apacheCommonsCompress}"

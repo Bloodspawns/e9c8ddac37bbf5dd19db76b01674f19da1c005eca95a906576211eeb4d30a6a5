@@ -65,7 +65,7 @@ tasks {
         doFirst {
             println("Repacking " + client.files.first { isRLClient(it.name) }.name + " into bclient-1.0.jar")
         }
-        from(zipTree(client.first())) {
+        from(zipTree(client.first{ isRLClient(it.name) })) {
             exclude("META-INF/")
         }
         baseName = "bclient"

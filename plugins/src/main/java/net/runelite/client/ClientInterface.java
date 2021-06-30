@@ -25,7 +25,8 @@ public class ClientInterface
 	private static HashSet<Integer> getNpcsByIdToHideOnDeath = null;
 	private static Method setDeadNPCsHidden = null;
 
-	// Get the rotation of the actor object. This is different from the orientation which is the world space rotation.
+	// !!!Deprecated. Use Actor.getCurrentOrientation instead.
+	// The rotation of the actor object. This is different from the orientation which is the world space rotation.
 	public static int getRotation(Actor actor)
 	{
 		if (getRotation == null)

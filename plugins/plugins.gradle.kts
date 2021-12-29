@@ -6,10 +6,18 @@ group = "org.example"
 version = "1.0"
 
 repositories {
+    ivy {
+        url = uri("https://github.com/")
+        patternLayout {
+            artifact("/[organisation]/c0603cb96187d5c295173c5c90d3b389671964dab55056f913c3d86c3333300b/releases/download/[revision]/[module].[ext]")
+        }
+        metadataSources { artifact() }
+    }
     mavenCentral()
 }
 
 dependencies {
+    compileOnly("Bloodspawns:bluelite-api:1.0")
     annotationProcessor(Libraries.lombok)
 
     compileOnly(Libraries.javax)

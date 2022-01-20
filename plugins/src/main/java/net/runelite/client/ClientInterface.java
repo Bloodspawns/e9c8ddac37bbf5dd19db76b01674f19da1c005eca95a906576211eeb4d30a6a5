@@ -50,7 +50,7 @@ public class ClientInterface
 	{
 		if (p instanceof BLProjectile)
 		{
-			return ((BLProjectile) p).getInteracting();
+			return ((BLProjectile) p).getBLInteracting();
 		}
 		return null;
 	}
